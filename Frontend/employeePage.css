@@ -1,0 +1,72 @@
+body,
+html {
+  height: 100%;
+  margin: 0;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+
+nav {
+  display: flex;
+  background-color: #3a3b3c;
+  justify-content: flex-end;
+}
+
+nav a {
+  background-color: #3a3b3c;
+  padding: 20px;
+  margin-right: 20px;
+  text-decoration: none;
+  color: white;
+}
+
+.page-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  min-height: 100%;
+
+  background-image: url("./employeePage.jpg");
+  background-color: black;
+  background-size: cover;
+}
+
+.content-section {
+  display: flex;
+  width: max-content;
+
+  align-items: center;
+  flex-direction: column;
+  background: linear-gradient(to top, white, #858585);
+  border-radius: 25px;
+  padding: 30px;
+  opacity: 100%;
+}
+
+.reimbTable {
+  padding: 30px;
+  flex: 3;
+  width: max-content;
+  text-align: center;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+th {
+  border: solid;
+  border-width: 2px 2px;
+  padding: 3px;
+}
+
+tr {
+  border: solid;
+  border-width: 2px 2px;
+}
+
+td {
+  border: solid;
+  border-width: 2px 2px;
+  padding: 3px;
+}

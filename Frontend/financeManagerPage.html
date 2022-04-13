@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ERS | Finance Manager Page</title>
+
+    <link rel="stylesheet" href="./financeManagerPage.css">
+</head>
+<body>
+
+    <div class="navbar">
+        <div class="dropdown">
+          <button class="dropbtn">Sort By Status 
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-content">
+            <a onclick="populateReimbursementsTable()">Get All Tickets</a>
+            <a onclick="populateApprovedReimbursementsTable()">Get Approved Tickets</a>
+            <a onclick="populatePendingReimbursementsTable()">Get Pending Tickets</a>
+            <a onclick="populateDeniedReimbursementsTable()">Get Rejected Tickets</a>
+          </div>
+        </div> 
+        <a id="approval-btn", onclick="approvePendingReimbursements()">Approve Pending Tickets</a>
+        <a id="logout-btn">Sign Out</a>
+      </div>
+
+    <div class="page-section">
+        <div class="content-section">
+            <h1>Welcome to the Finance Manager page!</h1>
+            <h2>Reimbursements Table</h2>
+
+            <div class="reimbTable">
+
+            <table id="manager-reimbursements-tbl">
+                <thead>
+                    <th> Ticket # </th>
+                    <th> Requested Amount </th>
+                    <th> Time Submitted </th>
+                    <th> Description </th>
+                    <th> First Name </th>
+                    <th> Last Name </th>
+                    <th> Status </th>
+                    <th> Type </th>
+                    <th> Receipt Image </th>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+            </div>
+          </div>       
+        </div>
+    </div>
+
+
+    <script src="financeManagerPage.js"></script>
+</body>
+</html>

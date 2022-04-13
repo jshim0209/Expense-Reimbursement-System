@@ -1,0 +1,125 @@
+body,
+html {
+  height: 100%;
+  margin: 0;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.navbar {
+  display: flex;
+  overflow: hidden;
+  background-color: #3a3b3c;
+  justify-content: flex-end;
+
+}
+
+.navbar a {
+  background-color: #3a3b3c;
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn {
+  background-color: #3a3b3c;
+  font-size: 16px;  
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  font-family: inherit;
+  margin: 0;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+  background-color: rgb(162, 255, 0);
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: white;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: center;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.page-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  min-height: 100%;
+  background-image: url("./financeManagerPage.jpg");
+  background-color: blue;
+  background-size: cover;
+  opacity: 100%;
+}
+
+.content-section {
+  display: flex;
+  width: max-content;
+  align-items: center;
+  flex-direction: column;
+  background: linear-gradient(to top, white, #858585);
+  border-radius: 25px;
+  padding: 30px;
+  opacity: 100%;
+}
+
+.reimbTable {
+  padding: 30px;
+  flex: 3;
+  width: max-content;
+  text-align: center;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+th {
+  border: solid;
+  border-width: 2px 2px;
+  padding: 3px;
+}
+
+tr {
+  border: solid;
+  border-width: 2px 2px;
+}
+
+td {
+  border: solid;
+  border-width: 2px 2px;
+  padding: 3px;
+}

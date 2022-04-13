@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AddReimbursementDTO.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Project-One-ERS</a> &gt; <a href="index.source.html" class="el_package">com.revature.dto</a> &gt; <span class="el_source">AddReimbursementDTO.java</span></div><h1>AddReimbursementDTO.java</h1><pre class="source lang-java linenums">package com.revature.dto;
+
+import java.io.InputStream;
+import java.sql.Timestamp;
+import java.util.Objects;
+
+public class AddReimbursementDTO {
+
+    private double amount;
+    private String description;
+    private InputStream receipt;
+    private int typeId;
+
+<span class="nc" id="L14">    public AddReimbursementDTO() {</span>
+<span class="nc" id="L15">    }</span>
+
+<span class="nc" id="L17">    public AddReimbursementDTO(double amount, String description, InputStream receipt, int typeId) {</span>
+<span class="nc" id="L18">        this.amount = amount;</span>
+<span class="nc" id="L19">        this.description = description;</span>
+<span class="nc" id="L20">        this.receipt = receipt;</span>
+<span class="nc" id="L21">        this.typeId = typeId;</span>
+<span class="nc" id="L22">    }</span>
+
+    public double getAmount() {
+<span class="nc" id="L25">        return amount;</span>
+    }
+
+    public void setAmount(double amount) {
+<span class="nc" id="L29">        this.amount = amount;</span>
+<span class="nc" id="L30">    }</span>
+
+    public String getDescription() {
+<span class="nc" id="L33">        return description;</span>
+    }
+
+    public void setDescription(String description) {
+<span class="nc" id="L37">        this.description = description;</span>
+<span class="nc" id="L38">    }</span>
+
+    public InputStream getReceipt() {
+<span class="nc" id="L41">        return receipt;</span>
+    }
+
+    public void setReceipt(InputStream receipt) {
+<span class="nc" id="L45">        this.receipt = receipt;</span>
+<span class="nc" id="L46">    }</span>
+
+    public int getTypeId() {
+<span class="nc" id="L49">        return typeId;</span>
+    }
+
+    public void setTypeId(int typeId) {
+<span class="nc" id="L53">        this.typeId = typeId;</span>
+<span class="nc" id="L54">    }</span>
+
+    @Override
+    public boolean equals(Object o) {
+<span class="nc bnc" id="L58" title="All 2 branches missed.">        if (this == o) return true;</span>
+<span class="nc bnc" id="L59" title="All 4 branches missed.">        if (o == null || getClass() != o.getClass()) return false;</span>
+<span class="nc" id="L60">        AddReimbursementDTO that = (AddReimbursementDTO) o;</span>
+<span class="nc bnc" id="L61" title="All 8 branches missed.">        return Double.compare(that.amount, amount) == 0 &amp;&amp; typeId == that.typeId &amp;&amp; Objects.equals(description, that.description) &amp;&amp; Objects.equals(receipt, that.receipt);</span>
+    }
+
+    @Override
+    public int hashCode() {
+<span class="nc" id="L66">        return Objects.hash(amount, description, receipt, typeId);</span>
+    }
+
+    @Override
+    public String toString() {
+<span class="nc" id="L71">        return &quot;AddReimbursementDTO{&quot; +</span>
+                &quot;amount=&quot; + amount +
+                &quot;, description='&quot; + description + '\'' +
+                &quot;, receipt=&quot; + receipt +
+                &quot;, typeId=&quot; + typeId +
+                '}';
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ReimbursementService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Project-One-ERS</a> &gt; <a href="index.source.html" class="el_package">com.revature.service</a> &gt; <span class="el_source">ReimbursementService.java</span></div><h1>ReimbursementService.java</h1><pre class="source lang-java linenums">package com.revature.service;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.util.*;
+
+import com.revature.exception.ImageNotFoundException;
+import org.apache.tika.Tika;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import com.revature.dao.ReimbursementDAO;
+import com.revature.dto.AddReimbursementDTO;
+import com.revature.dto.ResponseReimbursementDTO;
+import com.revature.dto.UpdateReimbursementStatusDTO;
+import com.revature.exception.InvalidImageException;
+import com.revature.model.Reimbursement;
+
+public class ReimbursementService {
+<span class="nc" id="L22">    Logger logger = LoggerFactory.getLogger(ReimbursementService.class);</span>
+
+    private ReimbursementDAO reimbDao;
+
+<span class="nc" id="L26">    public ReimbursementService() {</span>
+<span class="nc" id="L27">        this.reimbDao = new ReimbursementDAO();</span>
+<span class="nc" id="L28">    }</span>
+
+<span class="nc" id="L30">    public ReimbursementService(ReimbursementDAO mockDao) {</span>
+<span class="nc" id="L31">        this.reimbDao = mockDao;</span>
+<span class="nc" id="L32">    }</span>
+
+
+    public List&lt;ResponseReimbursementDTO&gt; getAllReimbursements() throws SQLException {
+<span class="nc" id="L36">        return reimbDao.getAllReimbursements();</span>
+    }
+
+    public List&lt;ResponseReimbursementDTO&gt; getAllReimbursementsbyUserId(String userId) throws SQLException {
+        try {
+<span class="nc" id="L41">            int uId = Integer.parseInt(userId);</span>
+<span class="nc" id="L42">            return reimbDao.getAllReimbursementsByUserId(uId);</span>
+<span class="nc" id="L43">        } catch (IllegalArgumentException e) {</span>
+<span class="nc" id="L44">            throw new IllegalArgumentException(&quot;Invalid integer given for request.&quot;);</span>
+        }
+    }
+
+    public List&lt;ResponseReimbursementDTO&gt; getPendingReimbursements() throws SQLException {
+<span class="nc" id="L49">        return reimbDao.getPendingReimbursements();</span>
+    }
+
+    public List&lt;ResponseReimbursementDTO&gt; getApprovedReimbursements() throws SQLException {
+<span class="nc" id="L53">        return reimbDao.getApprovedReimbursements();</span>
+    }
+
+    public List&lt;ResponseReimbursementDTO&gt; getDeniedReimbursements() throws SQLException {
+<span class="nc" id="L57">        return reimbDao.getDeniedReimbursements();</span>
+    }
+
+    public ResponseReimbursementDTO addReimbursement(int id, AddReimbursementDTO dto) throws SQLException, InvalidImageException, IOException {
+
+<span class="nc" id="L62">        Tika tika = new Tika();</span>
+<span class="nc" id="L63">        String mimeType = tika.detect(dto.getReceipt());</span>
+
+<span class="nc bnc" id="L65" title="All 6 branches missed.">        if(!mimeType.equals(&quot;image/jpeg&quot;)  &amp;&amp; !mimeType.equals(&quot;image/gif&quot;) &amp;&amp; !mimeType.equals(&quot;image/png&quot;)){</span>
+<span class="nc" id="L66">            throw new InvalidImageException(&quot;Image must be a .jpg, .gif, or a .png&quot;);</span>
+        }
+
+<span class="nc" id="L69">        Reimbursement reimbursementAdded = this.reimbDao.addReimbursement(id, dto);</span>
+<span class="nc" id="L70">        logger.info(&quot;User added new reimbursement&quot;);</span>
+<span class="nc" id="L71">        System.out.println(id);</span>
+
+
+<span class="nc" id="L74">        return new ResponseReimbursementDTO(reimbursementAdded.getId(), reimbursementAdded.getAmount(),</span>
+<span class="nc" id="L75">                reimbursementAdded.getTimeSubmitted(), reimbursementAdded.getDescription(),</span>
+<span class="nc" id="L76">                reimbursementAdded.getFirstName(), reimbursementAdded.getLastName(), reimbursementAdded.getStatusId(),</span>
+<span class="nc" id="L77">                reimbursementAdded.getTypeId());</span>
+    }
+
+    public boolean updateReimbursementStatus(UpdateReimbursementStatusDTO dto, String reimbId) throws
+            SQLException {
+
+<span class="nc" id="L83">        int rId = Integer.parseInt(reimbId);</span>
+<span class="nc" id="L84">        TimeZone.setDefault(TimeZone.getTimeZone(&quot;EST&quot;));</span>
+<span class="nc" id="L85">        Timestamp submitted = Timestamp.valueOf(LocalDateTime.now());</span>
+<span class="nc" id="L86">        dto.setTimeResolved(submitted);</span>
+<span class="nc" id="L87">        logger.info(&quot;User updated the status of reimbursement with an id of &quot; + reimbId + &quot; to &quot; + dto.getStatusId() + &quot;.&quot;);</span>
+
+
+<span class="nc" id="L90">        return reimbDao.updateReimbursementStatus(dto, rId);</span>
+    }
+
+    public InputStream getReceiptFromReimbursementById(String reimbId) throws SQLException, ImageNotFoundException{
+        try {
+<span class="nc" id="L95">            int rId = Integer.parseInt(reimbId);</span>
+
+<span class="nc" id="L97">            System.out.println(reimbId);</span>
+
+<span class="nc" id="L99">            InputStream is = this.reimbDao.getReceiptFromReimbursementById(rId);</span>
+
+<span class="nc bnc" id="L101" title="All 2 branches missed.">            if (is == null) {</span>
+<span class="nc" id="L102">                throw new ImageNotFoundException(&quot;Reimbursement id &quot; + reimbId + &quot; does not have an image&quot;);</span>
+            }
+
+<span class="nc" id="L105">            return is;</span>
+<span class="nc" id="L106">        } catch(NumberFormatException e) {</span>
+<span class="nc" id="L107">            throw new IllegalArgumentException(&quot;Reimbursement and/or user id must be an int value&quot;);</span>
+        }
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

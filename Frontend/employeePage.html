@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ERS | Employee Page</title>
+
+    <link rel="stylesheet" href="./employeePage.css">
+</head>
+<body>
+
+    <nav>
+        <a href="#" id="logout-btn">Logout</a>
+    </nav>
+
+    <div class="page-section">
+        <div class="content-section">
+            <h1>Welcom to the Employee Page</h1>
+            <h2>Reimbursements Table</h2>
+                <div class="reimbTable">
+                <table id="employee-reimbursements-tbl">
+                    <thead>
+                        <th> Ticket # </th>
+                        <th> Requested Amount </th>
+                        <th> Time Submitted </th>
+                        <th> Description </th>
+                        <th> First Name </th>
+                        <th> Last Name </th>
+                        <th> Status </th>
+                        <th> Type </th>
+                        <th> Receipt Image </th>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+                
+        <div id="reimbursement-submit-form">
+            <h2>Submit Reimbursement</h2>
+        <div>
+            <label for="a-amount-input">Reimbursement Amount (Without dollar sign):</label>
+            <input id="a-amount-input" type="text" />
+            <div></div>
+
+            <label for="a-description-input">Reimbursement Description:</label>
+            <input id="a-description-input" type="text" />
+            <div></div>
+
+            <label for="a-typeId-input">Reimbursement Type (1: Lodging, 2: Travel, 3: Food, 4: Other):</label>
+            <input id="a-typeId-input" type="text" />
+
+        </div>
+        <div>
+            <label for="a-file-input">Please Submit Receipt (PNG, GIF, JPEG):</label>
+            <input type="file" id="a-file-input" />
+        </div>
+        <button id="a-submit">Submit New Ticket</button>
+        </div>
+        </div>
+        </div>
+    </div>
+            
+    <script src="employeePage.js"></script>
+    
+</body>
+</html>

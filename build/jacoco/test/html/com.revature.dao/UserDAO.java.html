@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>UserDAO.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Project-One-ERS</a> &gt; <a href="index.source.html" class="el_package">com.revature.dao</a> &gt; <span class="el_source">UserDAO.java</span></div><h1>UserDAO.java</h1><pre class="source lang-java linenums">package com.revature.dao;
+
+import java.sql.*;
+
+import com.revature.dto.LoginDTO;
+import com.revature.model.User;
+import com.revature.utility.ConnectionUtility;
+
+<span class="nc" id="L9">public class UserDAO {</span>
+
+    public User getUserByUsernameAndPassword(LoginDTO dto) throws SQLException {
+
+<span class="nc" id="L13">        try (Connection con = ConnectionUtility.getConnection()) {</span>
+
+<span class="nc" id="L15">            String sql = &quot;SELECT u.user_id, u.username, u.password, ur.role, u.first_name, u.last_name, u.email &quot; +</span>
+                    &quot;FROM users u &quot; +
+                    &quot;INNER JOIN user_roles ur &quot; +
+                    &quot;ON u.user_role_id = ur.id &quot; +
+                    &quot;WHERE u.username = ? AND u.password = ?&quot;;
+
+<span class="nc" id="L21">            PreparedStatement pstmt = con.prepareStatement(sql);</span>
+
+<span class="nc" id="L23">            pstmt.setString(1, dto.getUsername());</span>
+<span class="nc" id="L24">            pstmt.setString(2, dto.getPassword());</span>
+
+<span class="nc" id="L26">            ResultSet rs = pstmt.executeQuery();</span>
+
+<span class="nc bnc" id="L28" title="All 2 branches missed.">            if (rs.next()) {</span>
+
+<span class="nc" id="L30">                int user_id = rs.getInt(&quot;user_id&quot;);</span>
+<span class="nc" id="L31">                String username = rs.getString(&quot;username&quot;);</span>
+<span class="nc" id="L32">                String password = rs.getString(&quot;password&quot;);</span>
+<span class="nc" id="L33">                String firstName = rs.getString(&quot;first_name&quot;);</span>
+<span class="nc" id="L34">                String lastName = rs.getString(&quot;last_name&quot;);</span>
+<span class="nc" id="L35">                String email = rs.getString(&quot;email&quot;);</span>
+<span class="nc" id="L36">                String user_role = rs.getString(&quot;role&quot;);</span>
+
+<span class="nc" id="L38">                User retrievedUser = new User();</span>
+<span class="nc" id="L39">                retrievedUser.setUser_id(user_id);</span>
+<span class="nc" id="L40">                retrievedUser.setUsername(username);</span>
+<span class="nc" id="L41">                retrievedUser.setPassword(password);</span>
+<span class="nc" id="L42">                retrievedUser.setFirstName(firstName);</span>
+<span class="nc" id="L43">                retrievedUser.setLastName(lastName);</span>
+<span class="nc" id="L44">                retrievedUser.setEmail(email);</span>
+<span class="nc" id="L45">                retrievedUser.setUser_role(user_role);</span>
+
+<span class="nc" id="L47">                return retrievedUser;</span>
+            } else {
+<span class="nc" id="L49">                return null;</span>
+            }
+        }
+    }
+
+    public User getUserByUsername(String username) throws SQLException {
+<span class="nc" id="L55">        try (Connection con = ConnectionUtility.getConnection()) {</span>
+<span class="nc" id="L56">            String sql = &quot;SELECT * from users2 &quot; +</span>
+                    &quot;WHERE users2.username = ? &quot;;
+
+<span class="nc" id="L59">            try( PreparedStatement pstmt = con.prepareStatement(sql)){</span>
+<span class="nc" id="L60">                pstmt.setString(1, username);;</span>
+
+<span class="nc" id="L62">                ResultSet rs = pstmt.executeQuery();</span>
+
+<span class="nc bnc" id="L64" title="All 2 branches missed.">                if (rs.next()) {</span>
+<span class="nc" id="L65">                    int id = rs.getInt(&quot;user_id&quot;);</span>
+<span class="nc" id="L66">                    String user_name = rs.getString(&quot;username&quot;);</span>
+<span class="nc" id="L67">                    String password = rs.getString(&quot;password&quot;);</span>
+<span class="nc" id="L68">                    String firstName = rs.getString(&quot;first_name&quot;);</span>
+<span class="nc" id="L69">                    String lastName = rs.getString(&quot;last_name&quot;);</span>
+<span class="nc" id="L70">                    String email = rs.getString(&quot;email&quot;);</span>
+<span class="nc" id="L71">                    String role = rs.getString(&quot;role&quot;);</span>
+
+<span class="nc" id="L73">                    return new User(id, user_name, password, firstName, lastName, email, role);</span>
+                }
+<span class="nc" id="L75">                return null;</span>
+            }
+        }
+    }
+
+
+
+    public User signUp(User user) throws SQLException {
+<span class="nc" id="L83">        try(Connection con = ConnectionUtility.getConnection()){</span>
+<span class="nc" id="L84">            String sql =  &quot;INSERT into users (username, password, first_name, last_name, email, user_role_id) &quot;+</span>
+                    &quot;values (?, ?, ?, ?, ?, (SELECT ur.id from user_roles ur where ur.role = ?))&quot;;
+<span class="nc" id="L86">            try(PreparedStatement pstmt = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)){</span>
+<span class="nc" id="L87">                pstmt.setString(1,user.getUsername());</span>
+<span class="nc" id="L88">                pstmt.setString(2,user.getPassword());</span>
+<span class="nc" id="L89">                pstmt.setString(3,user.getFirstName());</span>
+<span class="nc" id="L90">                pstmt.setString(4,user.getLastName());</span>
+<span class="nc" id="L91">                pstmt.setString(5,user.getEmail());</span>
+<span class="nc" id="L92">                pstmt.setString(6,user.getUser_role());</span>
+
+<span class="nc" id="L94">                pstmt.executeUpdate();</span>
+<span class="nc" id="L95">                ResultSet rs = pstmt.getGeneratedKeys();</span>
+<span class="nc" id="L96">                rs.next();</span>
+<span class="nc" id="L97">                int userId = rs.getInt(1);</span>
+
+<span class="nc" id="L99">                return new User(userId,user.getUsername(), user.getPassword(), user.getFirstName(), user.getLastName(), user.getEmail(), user.getUser_role());</span>
+            }
+        }
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

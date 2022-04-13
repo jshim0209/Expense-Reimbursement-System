@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Reimbursement.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Project-One-ERS</a> &gt; <a href="index.source.html" class="el_package">com.revature.model</a> &gt; <span class="el_source">Reimbursement.java</span></div><h1>Reimbursement.java</h1><pre class="source lang-java linenums">package com.revature.model;
+
+import java.io.InputStream;
+import java.util.Objects;
+
+public class Reimbursement {
+
+    private int id;
+    private double amount;
+    private String timeSubmitted;
+    private String description;
+    private InputStream receipt;
+    private String firstName;
+    private String lastName;
+    private String email;
+    private String username;
+    private int authorId;
+    private int resolverId;
+    private int typeId;
+    private String type;
+    private int statusId;
+    private String status;
+
+    private User employee;
+    private User finance_manager;
+
+<span class="nc" id="L27">    public Reimbursement() {</span>
+<span class="nc" id="L28">    }</span>
+
+    public Reimbursement(int id, double amount, String description, InputStream receipt, int authorId,
+                         int resolverId, int typeId, int statusId, String firstName, String lastName,
+<span class="nc" id="L32">                         User employee, User finance_manager) {</span>
+<span class="nc" id="L33">        this.id = id;</span>
+<span class="nc" id="L34">        this.amount = amount;</span>
+<span class="nc" id="L35">        this.description = description;</span>
+<span class="nc" id="L36">        this.receipt = receipt;</span>
+<span class="nc" id="L37">        this.authorId = authorId;</span>
+<span class="nc" id="L38">        this.resolverId = resolverId;</span>
+<span class="nc" id="L39">        this.typeId = typeId;</span>
+<span class="nc" id="L40">        this.statusId = statusId;</span>
+<span class="nc" id="L41">        this.firstName = firstName;</span>
+<span class="nc" id="L42">        this.lastName = lastName;</span>
+<span class="nc" id="L43">        this.employee = employee;</span>
+<span class="nc" id="L44">        this.finance_manager = finance_manager;</span>
+<span class="nc" id="L45">    }</span>
+
+    public Reimbursement(int id, double amount, String timeSubmitted, String description,
+                         InputStream receipt, String firstName, String lastName, String email, String username,
+                         int authorId, int resolverId, int typeId, String type, int statusId, String status,
+<span class="nc" id="L50">                         User employee, User finance_manager) {</span>
+<span class="nc" id="L51">        this.id = id;</span>
+<span class="nc" id="L52">        this.amount = amount;</span>
+<span class="nc" id="L53">        this.timeSubmitted = timeSubmitted;</span>
+<span class="nc" id="L54">        this.description = description;</span>
+<span class="nc" id="L55">        this.receipt = receipt;</span>
+<span class="nc" id="L56">        this.firstName = firstName;</span>
+<span class="nc" id="L57">        this.lastName = lastName;</span>
+<span class="nc" id="L58">        this.email = email;</span>
+<span class="nc" id="L59">        this.username = username;</span>
+<span class="nc" id="L60">        this.authorId = authorId;</span>
+<span class="nc" id="L61">        this.resolverId = resolverId;</span>
+<span class="nc" id="L62">        this.typeId = typeId;</span>
+<span class="nc" id="L63">        this.type = type;</span>
+<span class="nc" id="L64">        this.statusId = statusId;</span>
+<span class="nc" id="L65">        this.status = status;</span>
+<span class="nc" id="L66">        this.employee = employee;</span>
+<span class="nc" id="L67">        this.finance_manager = finance_manager;</span>
+<span class="nc" id="L68">    }</span>
+
+    public int getId() {
+<span class="nc" id="L71">        return id;</span>
+    }
+
+    public void setId(int id) {
+<span class="nc" id="L75">        this.id = id;</span>
+<span class="nc" id="L76">    }</span>
+
+    public double getAmount() {
+<span class="nc" id="L79">        return amount;</span>
+    }
+
+    public void setAmount(double amount) {
+<span class="nc" id="L83">        this.amount = amount;</span>
+<span class="nc" id="L84">    }</span>
+
+    public String getTimeSubmitted() {
+<span class="nc" id="L87">        return timeSubmitted;</span>
+    }
+
+    public void setTimeSubmitted(String timeSubmitted) {
+<span class="nc" id="L91">        this.timeSubmitted = timeSubmitted;</span>
+<span class="nc" id="L92">    }</span>
+
+    public String getDescription() {
+<span class="nc" id="L95">        return description;</span>
+    }
+
+    public void setDescription(String description) {
+<span class="nc" id="L99">        this.description = description;</span>
+<span class="nc" id="L100">    }</span>
+
+    public InputStream getReceipt() {
+<span class="nc" id="L103">        return receipt;</span>
+    }
+
+    public void setReceipt(InputStream receipt) {
+<span class="nc" id="L107">        this.receipt = receipt;</span>
+<span class="nc" id="L108">    }</span>
+
+    public String getFirstName() {
+<span class="nc" id="L111">        return firstName;</span>
+    }
+
+    public void setFirstName(String firstName) {
+<span class="nc" id="L115">        this.firstName = firstName;</span>
+<span class="nc" id="L116">    }</span>
+
+    public String getLastName() {
+<span class="nc" id="L119">        return lastName;</span>
+    }
+
+    public void setLastName(String lastName) {
+<span class="nc" id="L123">        this.lastName = lastName;</span>
+<span class="nc" id="L124">    }</span>
+
+    public String getEmail() {
+<span class="nc" id="L127">        return email;</span>
+    }
+
+    public void setEmail(String email) {
+<span class="nc" id="L131">        this.email = email;</span>
+<span class="nc" id="L132">    }</span>
+
+    public String getUsername() {
+<span class="nc" id="L135">        return username;</span>
+    }
+
+    public void setUsername(String username) {
+<span class="nc" id="L139">        this.username = username;</span>
+<span class="nc" id="L140">    }</span>
+
+    public int getAuthorId() {
+<span class="nc" id="L143">        return authorId;</span>
+    }
+
+    public void setAuthorId(int authorId) {
+<span class="nc" id="L147">        this.authorId = authorId;</span>
+<span class="nc" id="L148">    }</span>
+
+    public int getResolverId() {
+<span class="nc" id="L151">        return resolverId;</span>
+    }
+
+    public void setResolverId(int resolverId) {
+<span class="nc" id="L155">        this.resolverId = resolverId;</span>
+<span class="nc" id="L156">    }</span>
+
+    public int getTypeId() {
+<span class="nc" id="L159">        return typeId;</span>
+    }
+
+    public void setTypeId(int typeId) {
+<span class="nc" id="L163">        this.typeId = typeId;</span>
+<span class="nc" id="L164">    }</span>
+
+    public String getType() {
+<span class="nc" id="L167">        return type;</span>
+    }
+
+    public void setType(String type) {
+<span class="nc" id="L171">        this.type = type;</span>
+<span class="nc" id="L172">    }</span>
+
+    public int getStatusId() {
+<span class="nc" id="L175">        return statusId;</span>
+    }
+
+    public void setStatusId(int statusId) {
+<span class="nc" id="L179">        this.statusId = statusId;</span>
+<span class="nc" id="L180">    }</span>
+
+    public String getStatus() {
+<span class="nc" id="L183">        return status;</span>
+    }
+
+    public void setStatus(String status) {
+<span class="nc" id="L187">        this.status = status;</span>
+<span class="nc" id="L188">    }</span>
+
+    public User getEmployee() {
+<span class="nc" id="L191">        return employee;</span>
+    }
+
+    public void setEmployee(User employee) {
+<span class="nc" id="L195">        this.employee = employee;</span>
+<span class="nc" id="L196">    }</span>
+
+    public User getFinance_manager() {
+<span class="nc" id="L199">        return finance_manager;</span>
+    }
+
+    public void setFinance_manager(User finance_manager) {
+<span class="nc" id="L203">        this.finance_manager = finance_manager;</span>
+<span class="nc" id="L204">    }</span>
+
+    @Override
+    public boolean equals(Object o) {
+<span class="nc bnc" id="L208" title="All 2 branches missed.">        if (this == o) return true;</span>
+<span class="nc bnc" id="L209" title="All 4 branches missed.">        if (o == null || getClass() != o.getClass()) return false;</span>
+<span class="nc" id="L210">        Reimbursement that = (Reimbursement) o;</span>
+<span class="nc bnc" id="L211" title="All 34 branches missed.">        return id == that.id &amp;&amp; Double.compare(that.amount, amount) == 0 &amp;&amp; authorId == that.authorId &amp;&amp; resolverId == that.resolverId &amp;&amp; typeId == that.typeId &amp;&amp; statusId == that.statusId &amp;&amp; Objects.equals(timeSubmitted, that.timeSubmitted) &amp;&amp; Objects.equals(description, that.description) &amp;&amp; Objects.equals(receipt, that.receipt) &amp;&amp; Objects.equals(firstName, that.firstName) &amp;&amp; Objects.equals(lastName, that.lastName) &amp;&amp; Objects.equals(email, that.email) &amp;&amp; Objects.equals(username, that.username) &amp;&amp; Objects.equals(type, that.type) &amp;&amp; Objects.equals(status, that.status) &amp;&amp; Objects.equals(employee, that.employee) &amp;&amp; Objects.equals(finance_manager, that.finance_manager);</span>
+    }
+
+    @Override
+    public int hashCode() {
+<span class="nc" id="L216">        return Objects.hash(id, amount, timeSubmitted, description, receipt, firstName, lastName, email, username, authorId, resolverId, typeId, type, statusId, status, employee, finance_manager);</span>
+    }
+
+    @Override
+    public String toString() {
+<span class="nc" id="L221">        return &quot;Reimbursement{&quot; +</span>
+                &quot;id=&quot; + id +
+                &quot;, amount=&quot; + amount +
+                &quot;, timeSubmitted='&quot; + timeSubmitted + '\'' +
+                &quot;, description='&quot; + description + '\'' +
+                &quot;, receipt=&quot; + receipt +
+                &quot;, firstName='&quot; + firstName + '\'' +
+                &quot;, lastName='&quot; + lastName + '\'' +
+                &quot;, email='&quot; + email + '\'' +
+                &quot;, username='&quot; + username + '\'' +
+                &quot;, authorId=&quot; + authorId +
+                &quot;, resolverId=&quot; + resolverId +
+                &quot;, typeId=&quot; + typeId +
+                &quot;, type='&quot; + type + '\'' +
+                &quot;, statusId=&quot; + statusId +
+                &quot;, status='&quot; + status + '\'' +
+                &quot;, employee=&quot; + employee +
+                &quot;, finance_manager=&quot; + finance_manager +
+                '}';
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
