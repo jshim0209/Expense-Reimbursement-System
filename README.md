@@ -2,7 +2,8 @@
 
 ## Project Description
 
-The Expense Reimbursement System (ERS) will manage the process of reimbursing employees for expenses incurred while on company time. All employees in the company can login and submit requests for reimbursement and view their past tickets and pending requests. Finance managers can log in and view all reimbursement requests and past history for all employees in the company. Finance managers are authorized to approve and deny requests for expense reimbursement.
+The Expense Reimbursement System (ERS) is a full stack application, which allows all employees in the company to login and submit requests for reimbursements and view
+their past tickets and pending requests. Finance managers are able to view all reimbursement requests and past history for all employees in the company. Finance managers are able to approve and deny reimbursement requests for any remaining requests with pending status.
 
 ## Technologies Used
 
@@ -20,18 +21,17 @@ The Expense Reimbursement System (ERS) will manage the process of reimbursing em
 
 * Login as either employee or finance manager.
 * Employee and finance manager will automatically direct to their page.
-* Employee can submit tickets for reimbursements.
-* Employee can only see his/her own reimbursements
+* Employee can submit new reimbursement requests.
+* Employee can only see his/her own reimbursements.
+* Finance manger can view all of the reimbursements and fileter them by status (Pending, Approved, or Denied).
 * Finance manager can approve or deny the reimbursement.
-* Finance manger can view all of the reimbursements
-* Finance manager can filter reimbursements by status(Pending, Approved, or Denied).
 
 To-do list:
 
-* Finish Sign Up Feature
-* More Unit tests
-* Verify emails input when sign up
-* Styling on the frontend
+* Finish Sign Up Feature along with password hashing.
+* More Unit tests.
+* Verify emails input when sign up.
+* More styling on the frontend.
 
 ## Getting Started
 
