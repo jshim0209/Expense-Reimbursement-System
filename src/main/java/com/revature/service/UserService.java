@@ -42,10 +42,17 @@ public class UserService {
         if(userExists!=null){
             throw new IllegalArgumentException("The username already exists");
         }
-        String role = user.getUser_role();
-        user.setUser_role(role);
+        user.setUser_role(user.getUser_role());
+        user.setFirstName(user.getFirstName());
+        user.setLastName(user.getLastName());
+        user.setEmail(user.getEmail());
+        user.setUsername(user.getUsername());
+        user.setPassword(user.getPassword());
+
+        /*
         String hashedPassword = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt());
         user.setPassword(hashedPassword);
+         */
 
         return this.userDao.signUp(user);
     }

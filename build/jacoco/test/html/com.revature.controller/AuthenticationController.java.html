@@ -34,28 +34,22 @@ public class AuthenticationController implements Controller {
 <span class="nc" id="L34">    };</span>
 
 <span class="nc" id="L36">    private Handler signUp = (ctx) -&gt; {</span>
-<span class="nc" id="L37">        String username = ctx.formParam(&quot;username&quot;);</span>
-<span class="nc" id="L38">        String password = ctx.formParam(&quot;password&quot;);</span>
-<span class="nc" id="L39">        String firstName = ctx.formParam(&quot;firstName&quot;);</span>
-<span class="nc" id="L40">        String lastName = ctx.formParam(&quot;lastName&quot;);</span>
-<span class="nc" id="L41">        String email = ctx.formParam(&quot;email&quot;);</span>
-<span class="nc" id="L42">        String role = ctx.formParam(&quot;user_role&quot;);</span>
 
-<span class="nc" id="L44">        User newUser = new User(-1, username, password, firstName,lastName,email, role);</span>
-<span class="nc" id="L45">        User user = userService.signUp(newUser);</span>
-<span class="nc" id="L46">        String jwt = this.jwtService.createJWT(user);</span>
+<span class="nc" id="L38">        User user = ctx.bodyAsClass(User.class);</span>
 
-<span class="nc" id="L48">        ctx.header(&quot;Access-Control-Expose-Headers&quot;, &quot;*&quot;);</span>
-<span class="nc" id="L49">        ctx.header(&quot;Token&quot;, jwt);</span>
-<span class="nc" id="L50">        UserResponseDTO userResponseDTO = new UserResponseDTO(user.getUser_id(), user.getUsername(),</span>
-<span class="nc" id="L51">                user.getFirstName(), user.getLastName(), user.getEmail(), user.getUser_role());</span>
-<span class="nc" id="L52">        ctx.json(userResponseDTO);</span>
-<span class="nc" id="L53">    };</span>
+<span class="nc" id="L40">        User newUser = userService.signUp(user);</span>
+<span class="nc" id="L41">        String jwt = this.jwtService.createJWT(newUser);</span>
+
+<span class="nc" id="L43">        ctx.header(&quot;Access-Control-Expose-Headers&quot;, &quot;*&quot;);</span>
+<span class="nc" id="L44">        ctx.header(&quot;Token&quot;, jwt);</span>
+
+<span class="nc" id="L46">        ctx.json(newUser);</span>
+<span class="nc" id="L47">    };</span>
 
     @Override
     public void mapEndpoints(Javalin app) {
-<span class="nc" id="L57">        app.post(&quot;/login&quot;, login);</span>
-<span class="nc" id="L58">        app.post(&quot;/signUp&quot;,signUp);</span>
-<span class="nc" id="L59">    }</span>
+<span class="nc" id="L51">        app.post(&quot;/login&quot;, login);</span>
+<span class="nc" id="L52">        app.post(&quot;/signUp&quot;,signUp);</span>
+<span class="nc" id="L53">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

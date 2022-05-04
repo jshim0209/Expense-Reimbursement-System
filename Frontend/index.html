@@ -5,22 +5,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Employee Reimbursement System</title>
-    <link rel="stylesheet" href="./index.css" />
+    <link rel="stylesheet" href="./style.css" />
 </head>
 <body>
-    <div id="login">
-        <h1>ERS Login Page</h1>
-        <div class="form-input">
-            <label for="username">USERNAME:</label>
-            <input id="username" type="text">
-        </div>
-        <div class="form-input">
-            <label for="password">PASSWORD:</label>
-            <input id="password" type="password">
-        </div>
-        <button id="login-btn">LOGIN</button>
-        <p id="error-msg"></p>
+    <div class="flexbox-container">
+        <div class="flexbox-item">
+            <div id="login">
+                <h1>ERS Login Page</h1>
+                <div class="form-input">
+                    <label for="username">USERNAME:</label>
+                    <input id="username" type="text">
+                </div>
+                <div class="form-input">
+                    <label for="password">PASSWORD:</label>
+                    <input id="password" type="password">
+                </div>
+                <button id="login-btn">LOGIN</button>
+                <a id="signup" href="./signUp.html">Sign up</a>
+                <p id="error-msg"></p>
+            </div>
+        </div>    
     </div>
+
+    
     
 
     <script src="./index.js"></script>

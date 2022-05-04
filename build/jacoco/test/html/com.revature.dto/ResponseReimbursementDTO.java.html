@@ -20,16 +20,16 @@ public class ResponseReimbursementDTO {
 <span class="nc" id="L20">    }</span>
 
     public ResponseReimbursementDTO(int id, double amount, String timeSubmitted, String description,
-<span class="nc" id="L23">                                    String firstName, String lastName, int statusId, int typeId) {</span>
-<span class="nc" id="L24">        this.id = id;</span>
-<span class="nc" id="L25">        this.amount = amount;</span>
-<span class="nc" id="L26">        this.timeSubmitted = timeSubmitted;</span>
-<span class="nc" id="L27">        this.description = description;</span>
-<span class="nc" id="L28">        this.firstName = firstName;</span>
-<span class="nc" id="L29">        this.lastName = lastName;</span>
-<span class="nc" id="L30">        this.statusId = statusId;</span>
-<span class="nc" id="L31">        this.typeId = typeId;</span>
-<span class="nc" id="L32">    }</span>
+<span class="fc" id="L23">                                    String firstName, String lastName, int statusId, int typeId) {</span>
+<span class="fc" id="L24">        this.id = id;</span>
+<span class="fc" id="L25">        this.amount = amount;</span>
+<span class="fc" id="L26">        this.timeSubmitted = timeSubmitted;</span>
+<span class="fc" id="L27">        this.description = description;</span>
+<span class="fc" id="L28">        this.firstName = firstName;</span>
+<span class="fc" id="L29">        this.lastName = lastName;</span>
+<span class="fc" id="L30">        this.statusId = statusId;</span>
+<span class="fc" id="L31">        this.typeId = typeId;</span>
+<span class="fc" id="L32">    }</span>
 
     public ResponseReimbursementDTO(int id, double amount, String timeSubmitted, String description,
 <span class="nc" id="L35">                                    String firstName, String lastName, String status, String type) {</span>
@@ -139,10 +139,10 @@ public class ResponseReimbursementDTO {
 
     @Override
     public boolean equals(Object o) {
-<span class="nc bnc" id="L142" title="All 2 branches missed.">        if (this == o) return true;</span>
-<span class="nc bnc" id="L143" title="All 4 branches missed.">        if (o == null || getClass() != o.getClass()) return false;</span>
-<span class="nc" id="L144">        ResponseReimbursementDTO that = (ResponseReimbursementDTO) o;</span>
-<span class="nc bnc" id="L145" title="All 20 branches missed.">        return id == that.id &amp;&amp; Double.compare(that.amount, amount) == 0 &amp;&amp; statusId == that.statusId &amp;&amp; typeId == that.typeId &amp;&amp; Objects.equals(timeSubmitted, that.timeSubmitted) &amp;&amp; Objects.equals(description, that.description) &amp;&amp; Objects.equals(firstName, that.firstName) &amp;&amp; Objects.equals(lastName, that.lastName) &amp;&amp; Objects.equals(status, that.status) &amp;&amp; Objects.equals(type, that.type);</span>
+<span class="fc bfc" id="L142" title="All 2 branches covered.">        if (this == o) return true;</span>
+<span class="pc bpc" id="L143" title="2 of 4 branches missed.">        if (o == null || getClass() != o.getClass()) return false;</span>
+<span class="fc" id="L144">        ResponseReimbursementDTO that = (ResponseReimbursementDTO) o;</span>
+<span class="pc bpc" id="L145" title="10 of 20 branches missed.">        return id == that.id &amp;&amp; Double.compare(that.amount, amount) == 0 &amp;&amp; statusId == that.statusId &amp;&amp; typeId == that.typeId &amp;&amp; Objects.equals(timeSubmitted, that.timeSubmitted) &amp;&amp; Objects.equals(description, that.description) &amp;&amp; Objects.equals(firstName, that.firstName) &amp;&amp; Objects.equals(lastName, that.lastName) &amp;&amp; Objects.equals(status, that.status) &amp;&amp; Objects.equals(type, that.type);</span>
     }
 
     @Override

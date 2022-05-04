@@ -14,12 +14,12 @@ public class AddReimbursementDTO {
 <span class="nc" id="L14">    public AddReimbursementDTO() {</span>
 <span class="nc" id="L15">    }</span>
 
-<span class="nc" id="L17">    public AddReimbursementDTO(double amount, String description, InputStream receipt, int typeId) {</span>
-<span class="nc" id="L18">        this.amount = amount;</span>
-<span class="nc" id="L19">        this.description = description;</span>
-<span class="nc" id="L20">        this.receipt = receipt;</span>
-<span class="nc" id="L21">        this.typeId = typeId;</span>
-<span class="nc" id="L22">    }</span>
+<span class="fc" id="L17">    public AddReimbursementDTO(double amount, String description, InputStream receipt, int typeId) {</span>
+<span class="fc" id="L18">        this.amount = amount;</span>
+<span class="fc" id="L19">        this.description = description;</span>
+<span class="fc" id="L20">        this.receipt = receipt;</span>
+<span class="fc" id="L21">        this.typeId = typeId;</span>
+<span class="fc" id="L22">    }</span>
 
     public double getAmount() {
 <span class="nc" id="L25">        return amount;</span>
@@ -38,7 +38,7 @@ public class AddReimbursementDTO {
 <span class="nc" id="L38">    }</span>
 
     public InputStream getReceipt() {
-<span class="nc" id="L41">        return receipt;</span>
+<span class="fc" id="L41">        return receipt;</span>
     }
 
     public void setReceipt(InputStream receipt) {
@@ -55,10 +55,10 @@ public class AddReimbursementDTO {
 
     @Override
     public boolean equals(Object o) {
-<span class="nc bnc" id="L58" title="All 2 branches missed.">        if (this == o) return true;</span>
-<span class="nc bnc" id="L59" title="All 4 branches missed.">        if (o == null || getClass() != o.getClass()) return false;</span>
-<span class="nc" id="L60">        AddReimbursementDTO that = (AddReimbursementDTO) o;</span>
-<span class="nc bnc" id="L61" title="All 8 branches missed.">        return Double.compare(that.amount, amount) == 0 &amp;&amp; typeId == that.typeId &amp;&amp; Objects.equals(description, that.description) &amp;&amp; Objects.equals(receipt, that.receipt);</span>
+<span class="pc bpc" id="L58" title="1 of 2 branches missed.">        if (this == o) return true;</span>
+<span class="pc bpc" id="L59" title="2 of 4 branches missed.">        if (o == null || getClass() != o.getClass()) return false;</span>
+<span class="fc" id="L60">        AddReimbursementDTO that = (AddReimbursementDTO) o;</span>
+<span class="pc bpc" id="L61" title="4 of 8 branches missed.">        return Double.compare(that.amount, amount) == 0 &amp;&amp; typeId == that.typeId &amp;&amp; Objects.equals(description, that.description) &amp;&amp; Objects.equals(receipt, that.receipt);</span>
     }
 
     @Override
