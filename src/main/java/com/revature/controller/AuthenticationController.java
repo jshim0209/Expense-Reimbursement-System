@@ -1,7 +1,6 @@
 package com.revature.controller;
 
 import com.revature.dto.LoginDTO;
-import com.revature.dto.UserResponseDTO;
 import com.revature.model.User;
 import com.revature.service.JWTService;
 import com.revature.service.UserService;
@@ -34,22 +33,16 @@ public class AuthenticationController implements Controller {
     };
 
     private Handler signUp = (ctx) -> {
-        String username = ctx.formParam("username");
-        String password = ctx.formParam("password");
-        String firstName = ctx.formParam("firstName");
-        String lastName = ctx.formParam("lastName");
-        String email = ctx.formParam("email");
-        String role = ctx.formParam("user_role");
 
-        User newUser = new User(-1, username, password, firstName,lastName,email, role);
-        User user = userService.signUp(newUser);
-        String jwt = this.jwtService.createJWT(user);
+        User user = ctx.bodyAsClass(User.class);
+
+        User newUser = userService.signUp(user);
+        String jwt = this.jwtService.createJWT(newUser);
 
         ctx.header("Access-Control-Expose-Headers", "*");
         ctx.header("Token", jwt);
-        UserResponseDTO userResponseDTO = new UserResponseDTO(user.getUser_id(), user.getUsername(),
-                user.getFirstName(), user.getLastName(), user.getEmail(), user.getUser_role());
-        ctx.json(userResponseDTO);
+
+        ctx.json(newUser);
     };
 
     @Override

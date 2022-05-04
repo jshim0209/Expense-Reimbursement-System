@@ -13,10 +13,10 @@ public class JWTService {
 
     private Key key;
 
-<span class="nc" id="L16">    public JWTService() {</span>
-<span class="nc" id="L17">        byte[] secret = &quot;my_secret_password_asdfasdfjkljclkvjl13432k2312jlkj3941809df&quot;.getBytes();</span>
-<span class="nc" id="L18">        key = Keys.hmacShaKeyFor(secret);</span>
-<span class="nc" id="L19">    }</span>
+<span class="fc" id="L16">    public JWTService() {</span>
+<span class="fc" id="L17">        byte[] secret = &quot;my_secret_password_asdfasdfjkljclkvjl13432k2312jlkj3941809df&quot;.getBytes();</span>
+<span class="fc" id="L18">        key = Keys.hmacShaKeyFor(secret);</span>
+<span class="fc" id="L19">    }</span>
 
     public static JWTService getInstance() {
 <span class="nc bnc" id="L22" title="All 2 branches missed.">        if (JWTService.instance == null) {</span>
@@ -27,14 +27,14 @@ public class JWTService {
     }
 
     public String createJWT(User user) {
-<span class="nc" id="L30">        String jwt = Jwts.builder()</span>
-<span class="nc" id="L31">                .setSubject(user.getUsername())</span>
-<span class="nc" id="L32">                .claim(&quot;user_id&quot;, user.getUser_id())</span>
-<span class="nc" id="L33">                .claim(&quot;user_role&quot;, user.getUser_role())</span>
-<span class="nc" id="L34">                .signWith(key)</span>
-<span class="nc" id="L35">                .compact();</span>
+<span class="fc" id="L30">        String jwt = Jwts.builder()</span>
+<span class="fc" id="L31">                .setSubject(user.getUsername())</span>
+<span class="fc" id="L32">                .claim(&quot;user_id&quot;, user.getUser_id())</span>
+<span class="fc" id="L33">                .claim(&quot;user_role&quot;, user.getUser_role())</span>
+<span class="fc" id="L34">                .signWith(key)</span>
+<span class="fc" id="L35">                .compact();</span>
 
-<span class="nc" id="L37">        return jwt;</span>
+<span class="fc" id="L37">        return jwt;</span>
     }
 
     public Jws&lt;Claims&gt; parseJwt(String jwt) {
@@ -42,9 +42,9 @@ public class JWTService {
 <span class="nc" id="L42">            Jws&lt;Claims&gt; token = Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(jwt);</span>
 
 <span class="nc" id="L44">            return token;</span>
-<span class="nc" id="L45">        } catch(JwtException e) {</span>
-<span class="nc" id="L46">            e.printStackTrace();</span>
-<span class="nc" id="L47">            throw new UnauthorizedResponse(&quot;JWT was invalid&quot;);</span>
+<span class="fc" id="L45">        } catch(JwtException e) {</span>
+<span class="fc" id="L46">            e.printStackTrace();</span>
+<span class="fc" id="L47">            throw new UnauthorizedResponse(&quot;JWT was invalid&quot;);</span>
         }
 
     }

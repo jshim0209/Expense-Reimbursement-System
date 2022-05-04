@@ -19,7 +19,7 @@ import com.revature.exception.InvalidImageException;
 import com.revature.model.Reimbursement;
 
 public class ReimbursementService {
-<span class="nc" id="L22">    Logger logger = LoggerFactory.getLogger(ReimbursementService.class);</span>
+<span class="pc" id="L22">    Logger logger = LoggerFactory.getLogger(ReimbursementService.class);</span>
 
     private ReimbursementDAO reimbDao;
 
@@ -27,13 +27,13 @@ public class ReimbursementService {
 <span class="nc" id="L27">        this.reimbDao = new ReimbursementDAO();</span>
 <span class="nc" id="L28">    }</span>
 
-<span class="nc" id="L30">    public ReimbursementService(ReimbursementDAO mockDao) {</span>
-<span class="nc" id="L31">        this.reimbDao = mockDao;</span>
-<span class="nc" id="L32">    }</span>
+<span class="fc" id="L30">    public ReimbursementService(ReimbursementDAO mockDao) {</span>
+<span class="fc" id="L31">        this.reimbDao = mockDao;</span>
+<span class="fc" id="L32">    }</span>
 
 
     public List&lt;ResponseReimbursementDTO&gt; getAllReimbursements() throws SQLException {
-<span class="nc" id="L36">        return reimbDao.getAllReimbursements();</span>
+<span class="fc" id="L36">        return reimbDao.getAllReimbursements();</span>
     }
 
     public List&lt;ResponseReimbursementDTO&gt; getAllReimbursementsbyUserId(String userId) throws SQLException {
@@ -46,35 +46,35 @@ public class ReimbursementService {
     }
 
     public List&lt;ResponseReimbursementDTO&gt; getPendingReimbursements() throws SQLException {
-<span class="nc" id="L49">        return reimbDao.getPendingReimbursements();</span>
+<span class="fc" id="L49">        return reimbDao.getPendingReimbursements();</span>
     }
 
     public List&lt;ResponseReimbursementDTO&gt; getApprovedReimbursements() throws SQLException {
-<span class="nc" id="L53">        return reimbDao.getApprovedReimbursements();</span>
+<span class="fc" id="L53">        return reimbDao.getApprovedReimbursements();</span>
     }
 
     public List&lt;ResponseReimbursementDTO&gt; getDeniedReimbursements() throws SQLException {
-<span class="nc" id="L57">        return reimbDao.getDeniedReimbursements();</span>
+<span class="fc" id="L57">        return reimbDao.getDeniedReimbursements();</span>
     }
 
     public ResponseReimbursementDTO addReimbursement(int id, AddReimbursementDTO dto) throws SQLException, InvalidImageException, IOException {
 
-<span class="nc" id="L62">        Tika tika = new Tika();</span>
-<span class="nc" id="L63">        String mimeType = tika.detect(dto.getReceipt());</span>
+<span class="fc" id="L62">        Tika tika = new Tika();</span>
+<span class="fc" id="L63">        String mimeType = tika.detect(dto.getReceipt());</span>
 
-<span class="nc bnc" id="L65" title="All 6 branches missed.">        if(!mimeType.equals(&quot;image/jpeg&quot;)  &amp;&amp; !mimeType.equals(&quot;image/gif&quot;) &amp;&amp; !mimeType.equals(&quot;image/png&quot;)){</span>
+<span class="pc bpc" id="L65" title="5 of 6 branches missed.">        if(!mimeType.equals(&quot;image/jpeg&quot;)  &amp;&amp; !mimeType.equals(&quot;image/gif&quot;) &amp;&amp; !mimeType.equals(&quot;image/png&quot;)){</span>
 <span class="nc" id="L66">            throw new InvalidImageException(&quot;Image must be a .jpg, .gif, or a .png&quot;);</span>
         }
 
-<span class="nc" id="L69">        Reimbursement reimbursementAdded = this.reimbDao.addReimbursement(id, dto);</span>
-<span class="nc" id="L70">        logger.info(&quot;User added new reimbursement&quot;);</span>
-<span class="nc" id="L71">        System.out.println(id);</span>
+<span class="fc" id="L69">        Reimbursement reimbursementAdded = this.reimbDao.addReimbursement(id, dto);</span>
+<span class="fc" id="L70">        logger.info(&quot;User added new reimbursement&quot;);</span>
+<span class="fc" id="L71">        System.out.println(id);</span>
 
 
-<span class="nc" id="L74">        return new ResponseReimbursementDTO(reimbursementAdded.getId(), reimbursementAdded.getAmount(),</span>
-<span class="nc" id="L75">                reimbursementAdded.getTimeSubmitted(), reimbursementAdded.getDescription(),</span>
-<span class="nc" id="L76">                reimbursementAdded.getFirstName(), reimbursementAdded.getLastName(), reimbursementAdded.getStatusId(),</span>
-<span class="nc" id="L77">                reimbursementAdded.getTypeId());</span>
+<span class="fc" id="L74">        return new ResponseReimbursementDTO(reimbursementAdded.getId(), reimbursementAdded.getAmount(),</span>
+<span class="fc" id="L75">                reimbursementAdded.getTimeSubmitted(), reimbursementAdded.getDescription(),</span>
+<span class="fc" id="L76">                reimbursementAdded.getFirstName(), reimbursementAdded.getLastName(), reimbursementAdded.getStatusId(),</span>
+<span class="fc" id="L77">                reimbursementAdded.getTypeId());</span>
     }
 
     public boolean updateReimbursementStatus(UpdateReimbursementStatusDTO dto, String reimbId) throws

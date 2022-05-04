@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.revature.service.ReimbursementServiceTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2022-04-19T14:46:27" hostname="MSI" time="1.398">
+  <properties/>
+  <testcase name="testGetAllReimbursements()" classname="com.revature.service.ReimbursementServiceTest" time="1.205"/>
+  <testcase name="testAddReimbursement()" classname="com.revature.service.ReimbursementServiceTest" time="0.185"/>
+  <testcase name="testGetDeniedReimbursements()" classname="com.revature.service.ReimbursementServiceTest" time="0.001"/>
+  <testcase name="testGetApprovedReimbursements()" classname="com.revature.service.ReimbursementServiceTest" time="0.001"/>
+  <testcase name="testGetPendingReimbursements()" classname="com.revature.service.ReimbursementServiceTest" time="0.002"/>
+  <testcase name="testUpdateReimbursement()" classname="com.revature.service.ReimbursementServiceTest" time="0.001"/>
+  <system-out><![CDATA[19 04 2022 - 10:46:29.178 [Test worker] INFO  c.r.service.ReimbursementService - User added new reimbursement
+1
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

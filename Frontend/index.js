@@ -18,8 +18,7 @@ loginBtn.addEventListener('click', async () => {
                                     // To retain the HttpSession cookie that will be subsequently sent in all later requests
     });
 
-
-
+    
 if (res.status === 200) {
     let user = await res.json();
 
